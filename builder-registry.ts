@@ -1,10 +1,11 @@
 "use client";
 import "@builder.io/widgets";
-import { builder, Builder, withChildren } from "@builder.io/react";
-import { Button } from "./components/ui/button";
+import {builder, Builder, withChildren} from "@builder.io/react";
+import {Button} from "./components/ui/button";
 import Counter from "./components/Counter/Counter";
 import Footer from "./components/Layout/Footer";
-import { Header } from "./components/Layout/Header";
+import {Header} from "./components/Layout/Header";
+import {LocaleSwitcher} from "./components/Locale/LocalSwitcher";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
 import IconCard from "./components/Card/IconCard";
 import ImageHero from "./components/Hero/ImageHero";
@@ -19,88 +20,78 @@ Builder.register("editor.settings", {
   models: ["page"],
   designTokens: {
     colors: [
-      { name: "Primary", value: "var(--color-primary, #000000)" },
-      { name: "Secondary", value: "var(--color-secondary, #ffffff)" },
-      { name: "Deconstructive", value: "var(--color-deconstructive, #18B4F4)" },
-      { name: "Muted", value: "var(--color-muted, #C8E2EE)" },
-      { name: "Accent", value: "var(--color-accent, #F35959)" },
-      { name: "Energetic", value: "var(--color-energetic, #A97FF2)" },
-      { name: "Background", value: "var(--color-background, #ffffff)" },
-      { name: "Text", value: "var(--color-primary, #000000)" },
-      { name: "Text Muted", value: "var(--color-muted, #e2e8f0)" },
+      {name: "Primary", value: "var(--color-primary, #000000)"},
+      {name: "Secondary", value: "var(--color-secondary, #ffffff)"},
+      {name: "Deconstructive", value: "var(--color-deconstructive, #18B4F4)"},
+      {name: "Muted", value: "var(--color-muted, #C8E2EE)"},
+      {name: "Accent", value: "var(--color-accent, #F35959)"},
+      {name: "Energetic", value: "var(--color-energetic, #A97FF2)"},
+      {name: "Background", value: "var(--color-background, #ffffff)"},
+      {name: "Text", value: "var(--color-primary, #000000)"},
+      {name: "Text Muted", value: "var(--color-muted, #e2e8f0)"},
       {
         name: "Background Light",
         value: "var(--color-background-light, #FAFAFA)",
       },
     ],
     spacing: [
-      { name: "Large", value: "var(--space-large, 20px)" },
-      { name: "Small", value: "var(--space-small, 10px)" },
-      { name: "Tiny", value: "5px" },
+      {name: "Large", value: "var(--space-large, 20px)"},
+      {name: "Small", value: "var(--space-small, 10px)"},
+      {name: "Tiny", value: "5px"},
     ],
-    fontFamily: [{ name: "Primary", value: "var(--primary-font, Poppins)" }],
+    fontFamily: [{name: "Primary", value: "var(--primary-font, Poppins)"}],
     fontSize: [
-      { name: "Small", value: "var(--font-size-small, 12px)" },
-      { name: "Medium", value: "var(--font-size-medium, 14px)" },
-      { name: "Large", value: "var(--font-size-large, 16px)" },
+      {name: "Small", value: "var(--font-size-small, 12px)"},
+      {name: "Medium", value: "var(--font-size-medium, 14px)"},
+      {name: "Large", value: "var(--font-size-large, 16px)"},
     ],
     fontWeight: [
-      { name: "Light", value: "var(--font-weight-light, 200)" },
-      { name: "Normal", value: "var(--font-weight-regular, 400)" },
-      { name: "Medium", value: "var(--font-weight-medium, 600)" },
-      { name: "Bold", value: "var(--font-weight-bold, 800)" },
+      {name: "Light", value: "var(--font-weight-light, 200)"},
+      {name: "Normal", value: "var(--font-weight-regular, 400)"},
+      {name: "Medium", value: "var(--font-weight-medium, 600)"},
+      {name: "Bold", value: "var(--font-weight-bold, 800)"},
     ],
     letterSpacing: [
-      { name: "Tight", value: "var(--letter-spacing-tight, -0.02em)" },
-      { name: "Normal", value: "var(--letter-spacing-normal, 0em)" },
-      { name: "Relaxed", value: "var(--letter-spacing-wide, 0.02em)" },
-      { name: "Loose", value: "var(--letter-spacing-wide, 0.04em)" },
+      {name: "Tight", value: "var(--letter-spacing-tight, -0.02em)"},
+      {name: "Normal", value: "var(--letter-spacing-normal, 0em)"},
+      {name: "Relaxed", value: "var(--letter-spacing-wide, 0.02em)"},
+      {name: "Loose", value: "var(--letter-spacing-wide, 0.04em)"},
     ],
     lineHeight: [
-      { name: "None", value: "var(--line-height-none, 1)" },
-      { name: "Tight", value: "var(--line-height-tight, 1.2)" },
-      { name: "Normal", value: "var(--line-height-normal, 1.5)" },
-      { name: "Relaxed", value: "var(--line-height-relaxed, 1.8)" },
-      { name: "Loose", value: "var(--line-height-loose, 2)" },
+      {name: "None", value: "var(--line-height-none, 1)"},
+      {name: "Tight", value: "var(--line-height-tight, 1.2)"},
+      {name: "Normal", value: "var(--line-height-normal, 1.5)"},
+      {name: "Relaxed", value: "var(--line-height-relaxed, 1.8)"},
+      {name: "Loose", value: "var(--line-height-loose, 2)"},
     ],
   },
 });
 Builder.register("insertMenu", {
   name: "Heros",
-  items: [
-    { name: "TextHero" },
-    { name: "ImageHero" },
-    { name: "SplitHero" },
-    { name: "HeroWithChildren" },
-  ],
+  items: [{name: "TextHero"}, {name: "ImageHero"}, {name: "SplitHero"}, {name: "HeroWithChildren"}],
   // priority: 2,
 });
 Builder.register("insertMenu", {
   name: "Cards",
-  items: [{ name: "IconCard" }, { name: "ProductCard" }],
+  items: [{name: "IconCard"}, {name: "ProductCard"}],
   // priority: 3,
 });
 if (Builder.isBrowser) {
   if (builder.editingModel === "homepage") {
     Builder.register("insertMenu", {
       name: "Layout",
-      items: [
-        { name: "Columns" },
-        { name: "Builder:Carousel" },
-        { name: "Collection" },
-      ],
+      items: [{name: "Columns"}, {name: "Builder:Carousel"}, {name: "Collection"}],
     });
   }
 }
 Builder.register("insertMenu", {
   name: "Popups",
-  items: [{ name: "UpsellPopup" }],
+  items: [{name: "UpsellPopup"}],
 });
 
 Builder.registerComponent(Counter, {
   name: "Counter",
-  image:
-    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F000c4b516154412498592db34d340789",
+  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F000c4b516154412498592db34d340789",
   inputs: [
     {
       name: "initialCount",
@@ -111,8 +102,7 @@ Builder.registerComponent(Counter, {
 
 Builder.registerComponent(SplitHero, {
   name: "SplitHero",
-  image:
-    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F87697e0b85624a38a7535fff9bdb744b",
+  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F87697e0b85624a38a7535fff9bdb744b",
   inputs: [
     {
       name: "imageAlignment",
@@ -166,8 +156,7 @@ Builder.registerComponent(SplitHero, {
     {
       name: "subTitle",
       type: "richText",
-      defaultValue:
-        "<p>Create impactful, bold silhouettes in our chic, cozy classics</p>",
+      defaultValue: "<p>Create impactful, bold silhouettes in our chic, cozy classics</p>",
     },
     {
       name: "hasCTA",
@@ -200,8 +189,7 @@ Builder.registerComponent(SplitHero, {
 
 Builder.registerComponent(IconCard, {
   name: "IconCard",
-  image:
-    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fa1602969eefa459cbc1cc4e9bff96555",
+  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fa1602969eefa459cbc1cc4e9bff96555",
   inputs: [
     {
       name: "alignment",
@@ -227,8 +215,7 @@ Builder.registerComponent(IconCard, {
     {
       name: "icon",
       type: "file",
-      defaultValue:
-        "https://cdn.builder.io/static/media/builder-logo.bff0faae.png",
+      defaultValue: "https://cdn.builder.io/static/media/builder-logo.bff0faae.png",
       required: true,
     },
     {
@@ -242,8 +229,7 @@ Builder.registerComponent(IconCard, {
 
 Builder.registerComponent(TextHero, {
   name: "TextHero",
-  image:
-    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F6c33301bb9e94d46ad293b704457b991",
+  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F6c33301bb9e94d46ad293b704457b991",
   inputs: [
     {
       name: "subTitle",
@@ -260,8 +246,7 @@ Builder.registerComponent(TextHero, {
 
 Builder.registerComponent(ImageHero, {
   name: "ImageHero",
-  image:
-    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F1da6aa719e0648b481ccd964186a4bcb",
+  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F1da6aa719e0648b481ccd964186a4bcb",
   inputs: [
     {
       name: "title",
@@ -311,8 +296,7 @@ Builder.registerComponent(ImageHero, {
 Builder.registerComponent(withChildren(HeroWithChildren), {
   name: "HeroWithChildren",
   canHaveChildren: true,
-  image:
-    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F2bbe97f46ba14868a6925faf5cbb8d18",
+  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F2bbe97f46ba14868a6925faf5cbb8d18",
   inputs: [
     {
       name: "childBlocks",
@@ -339,17 +323,16 @@ Builder.registerComponent(withChildren(Button), {
   defaultChildren: [
     {
       "@type": "@builder.io/sdk:Element",
-      component: { name: "Text", options: { text: "<p>Click Me</p>" } },
+      component: {name: "Text", options: {text: "<p>Click Me</p>"}},
     },
   ],
   childRequirements: {
     message: "You can only put Text or Image Icons inside a Button",
     query: {
-      "component.name": { $in: ["Text"] },
+      "component.name": {$in: ["Text"]},
     },
   },
-  image:
-    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5803f6cb27764a339296458c0056dc33",
+  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5803f6cb27764a339296458c0056dc33",
   inputs: [
     {
       name: "children",
@@ -374,4 +357,8 @@ Builder.registerComponent(Footer, {
 
 Builder.registerComponent(Header, {
   name: "Header",
+});
+
+Builder.registerComponent(LocaleSwitcher, {
+  name: "Locale Switcher",
 });
